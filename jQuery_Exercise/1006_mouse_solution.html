@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>還可以輸入<span id="counter">39</span>個文字</div>
+    <textarea id="word"></textarea>
+
+    <script>
+        var m = document.getElementById("word");
+        m.addEventListener("keydown", showCounter, false);
+
+        function showCounter(event) {
+        var msg = event.target.value; // 欄位值
+        var numChar = msg.length;
+        var maxChar = 39;
+        var charRemain = maxChar - numChar;
+        if (charRemain >= 0) {
+            var c = document.getElementById("counter");
+            c.innerHTML = charRemain;
+        }
+        else {
+            event.preventDefault();
+        }   
+        }
+    </script>
+</body>
+</html>

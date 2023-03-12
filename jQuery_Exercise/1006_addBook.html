@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function addBook(){
+            var book=document.getElementById("book");
+            var txtNode=document.createTextNode(book.value);
+            var li_node=document.createElement("li");
+            li_node.appendChild(txtNode);
+            var ul_node=document.getElementById("list");
+            ul_node.appendChild(li_node);
+            var num=document.getElementById("number");
+            num.innerHTML=ul_node.children.length;
+        }
+    </script>
+    <p>書名:</p> <input type="text" id="book"> <button onclick="addBook()">新增</button>
+    <p>現在有<span id="number">1</span>本書</p>
+    <ul id="list">
+        <li>網頁程式設計的16堂課</li>
+    </ul>
+</body>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p onmouseover="this.style.backgroundColor='red';"
+    onmouseout="this.style.backgroundColor='blue';">背景色彩</p>
+
+    <p id="p_mouse">背景色彩練習</p>
+    <script>
+        function para_blue(e){
+            var ppp=document.getElementById("p_mouse");
+            ppp.style.backgroundColor='blue';
+        }
+        function para_red(e){
+            var ppp=document.getElementById("p_mouse");
+            ppp.style.backgroundColor='red';
+        }
+
+        var para=document.getElementById("p_mouse");
+        para.addEventListener('mouseover',para_blue);
+        para.addEventListener('mouseout',para_red);
+    </script>
+
+    <p style="display:inline;">你還可以輸入<p id="counter" style="display:inline;"></p>>個中文字或英文字元</p>
+    <textarea id="memo"></textarea>
+    <script>
+        function showCounter(event) {
+        var msg = event.target.value; // 欄位值
+        var numChar = msg.length;
+        var maxChar = 2019;
+        var charRemain = maxChar - numChar;
+        if (numChar <= maxChar) {
+            var c = document.getElementById("counter");
+            c.innerHTML = charRemain;
+        }
+        else {
+            event.preventDefault();
+        }   
+        }
+
+        var m = document.getElementById("memo");
+        m.addEventListener("keydown", showCounter, false);
+    </script>
+
+</body>
+</html>

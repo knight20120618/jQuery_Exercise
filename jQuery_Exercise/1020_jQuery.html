@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.6.1.js"></script>
+    <style>
+        div {clear: left;}
+        .small{
+            width: 100px;
+            float: left;
+            margin: 2px;
+            padding: 2px;
+            border: 1px black solid;}
+        #big {width: 640px;}
+    </style>
+</head>
+<body>
+    <h1>修改1006日的使用jQuery來新增書本</h1>
+    <p>書名:</p> <input type="text" id="book"> <button>新增</button>
+    <p>現在有<span id="number">1</span>本書</p>
+    <ul id="list">
+        <li>網頁程式設計的16堂課</li>
+    </ul>
+    <script>
+        $('button').click(function(){
+        var newInput = $('<li>'+$('#book').val()+'</li>')
+        $('#list').append(newInput);
+        $('#book').val('');
+        var length = $('#list li').length;
+        $('#number').text(length);
+        });
+    </script>
+
+    <h3>看蜂炮</h3>
+    <div id="thumbs">
+        <img class="small" src="DSCF3350.jpg">
+        <img class="small" src="DSCF3359.jpg">
+        <img class="small" src="DSCF3392.jpg">
+        <img class="small" src="DSCF3396.jpg">
+    </div>
+    <div>
+        <img id="big" src="DSCF3350.jpg">
+    </div>
+    <script>
+        $(function(){
+            var timer; // 計時器變數
+
+            // 設定縮圖的按下事件處理函式
+            $('.small').click(function(){
+            clearTimeout(timer); // 清除計時器
+            // 將大圖 img 的 src 屬性設為縮圖之 src 屬性值
+            $('#big').attr('src', $(this).attr('src'));
+            // 索引值加 1 表示下一張縮圖
+            var next = $('.small').index(this) + 1;
+ 
+            // 若索引值超過範圍, 則設為0, 表示再重頭開始播放
+            if(next == $('.small').length) next=0; 
+            // 設定 3 秒後觸發下一張縮圖的 click 事件
+            timer=setTimeout(function(){
+            $('.small')[next].click()
+            }, 3000);
+            }); // $('.small').click() 敘述的結尾 
+ 
+            //一開始先選第一張縮圖
+            $('.small')[0].click()
+        });
+    </script>
+</body>
+</html>

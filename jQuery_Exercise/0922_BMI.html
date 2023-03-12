@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <form name="BMI" id="BBB">
+        <label>姓名: <input type="text" name="n" id="n"></label><br>
+        <label>性別:
+            <label><input type="radio" value="男" name="sex">BOY</label>
+            <label><input type="radio" value="女" name="sex">GIRL</label>
+        </label><br>
+        <label>身高: <input type="text" name="height">公尺</label><br>
+        <label>體重: <input type="text" name="weight">公斤</label><br>
+        <label>BMI=<input type="text" id="BMIBMI"></label><br>
+        <button onclick="computeBMI()">計算BMI</button>
+    </form>
+    <script>
+        function computeBMI() {
+            var f = document.getElementById("BBB");
+            var hh = f.height.value;
+            var ww = f.weight.value;
+            var BMI = ww / (hh * hh);
+            document.getElementById("BMIBMI").value = BMI;
+        }
+    </script>
+</body>
+
+</html>
